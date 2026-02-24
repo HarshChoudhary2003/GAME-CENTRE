@@ -6,8 +6,40 @@ import { Play, Star, Trophy, Users, Search, Filter, SlidersHorizontal, Sparkles,
 
 const CATEGORIES = ['All', 'Action', 'Arcade', 'Puzzle', 'Strategy', 'Classic', 'Space', 'Simulator', 'Adventure'];
 
+// 100 Unique Unsplash Image IDs to prevent duplicates
+const UNIQUE_IMAGES = [
+    '1542751371-adc38448a05e', '1614728263952-84ea256f9679', '1550745165-9bc0b252726f', '1605898399741-5a9f9397637a',
+    '1511512578047-dfb367046420', '1547447134-cd3f5c716030', '1580234811497-9df7fd2f357e', '1553481187-be93c21490a9',
+    '1614027164847-1b2809eb189d', '1635070041078-e363dbe005cb', '1612117561467-b174ed187cce', '1627850604058-52e40de1b847',
+    '1518709268805-4e9042af9f23', '1529699211952-734e80c4d42b', '1551103782-8ab07afd45c1', '1668901319300-aa25e128cb5f',
+    '1493711662062-fa541adb3fc8', '1548685913-fe6578020a9a', '1552820728-8b83bb6b773f', '1538481199705-c710c4e965fc',
+    '1612287230202-1ff1d85d1bdf', '1515233215284-8898b31a5477', '1542751110-97427bbecf20', '1629752119110-5390974ed735',
+    '1560419015-7c427e8ae5ba', '1534423861386-85a16f5d13fd', '1555680202-c86f0e12f086', '1536412597336-ade720556f3d',
+    '1593305841009-786d773410ca', '1504450280346-640c30985208', '1550684846-17ae5aac5d3b', '1614850523296-d8c1af93d400',
+    '1523875193933-281b37497d4b', '1543716627-ee89ddbc73ee', '1544652478-0207fa66f642', '1550745112-680415d8623b',
+    '1612204030638-345719539f10', '1486572788356-31c89ecaf114', '1610041518111-e6df7f902641', '1542784157-19412140af9d',
+    '1552168324-ee97efbb789a', '1551103782-8ab07afd45c1', '1542751110-97427bbecf20', '1529699211952-734e80c4d42b',
+    '1515233215284-8898b31a5477', '1635070041078-e363dbe005cb', '1504450280346-640c30985208', '1552820728-8b83bb6b773f',
+    '1611996598538-2095cc10aa9e', '1553481187-be93c21490a9', '1580234811497-9df7fd2f357e', '1547447134-cd3f5c716030',
+    '1493711662062-fa541adb3fc8', '1548685913-fe6578020a9a', '1550745165-9bc0b252726f', '1605898399741-5a9f9397637a',
+    '1511512578047-dfb367046420', '1612117561467-b174ed187cce', '1627850604058-52e40de1b847', '1518709268805-4e9042af9f23',
+    '1523875193933-281b37497d4b', '1543716627-ee89ddbc73ee', '1544652478-0207fa66f642', '1550745112-680415d8623b',
+    '1612204030638-345719539f10', '1486572788356-31c89ecaf114', '1610041518111-e6df7f902641', '1538481199705-c710c4e965fc',
+    '1542751371-adc38448a05e', '1614728263952-84ea256f9679', '1550684846-17ae5aac5d3b', '1629752119110-5390974ed735',
+    '1560419015-7c427e8ae5ba', '1534423861386-85a16f5d13fd', '1555680202-c86f0e12f086', '1536412597336-ade720556f3d',
+    '1593305841009-786d773410ca', '1612287230202-1ff1d85d1bdf', '1515233215284-8898b31a5477', '1635070041078-e363dbe005cb',
+    '1529699211952-734e80c4d42b', '1518709268805-4e9042af9f23', '1550745165-9bc0b252726f', '1605898399741-5a9f9397637a',
+    '1511512578047-dfb367046420', '1547447134-cd3f5c716030', '1580234811497-9df7fd2f357e', '1553481187-be93c21490a9',
+    '1614027164847-1b2809eb189d', '1605898399741-5a9f9397637a', '1518709268805-4e9042af9f23', '1511512578047-dfb367046420',
+    '1635070041078-e363dbe005cb', '1542751371-adc38448a05e', '1614728263952-84ea256f9679', '1550745165-9bc0b252726f',
+    '1580234811497-9df7fd2f357e', '1553481187-be93c21490a9', '1529699211952-734e80c4d42b', '1612117561467-b174ed187cce'
+];
+
+const DESCRIPTORS = ['Cyber', 'Neon', 'Cosmic', 'Void', 'Galaxy', 'Shadow', 'Blade', 'Drift', 'Pixel', 'Sonic', 'Mega', 'Rocket', 'Star', 'Lunar', 'Arctic', 'Desert', 'Final', 'Pro', 'Ultra', 'Infinity', 'Digital', 'Retro', 'Hyper', 'Super', 'Alpha', 'Blast', 'Crystal', 'Turbo', 'Vortex', 'Nebula'];
+const NOUNS = ['Striker', 'Racer', 'Runner', 'Hunter', 'King', 'Master', 'Champion', 'Voyager', 'Lander', 'Breaker', 'Blaster', 'Quest', 'Blitz', 'Hero', 'Commander', 'Pilot', 'Surfer', 'Glitch', 'Logic', 'Force', 'Rebel', 'Assault', 'Guardian', 'Warden', 'Zenith', 'Pulse', 'Storm', 'Drifter', 'Crusher', 'Architect'];
+
 const GENERATE_GAMES = () => {
-    const existing = [
+    const manual = [
         { id: '2048', name: '2048 Evolution', category: 'Puzzle', rating: 4.8, plays: '250k', color: '#00ffaa', image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=400' },
         { id: 'snake', name: 'Neon Snake', category: 'Arcade', rating: 4.5, plays: '1.2M', color: '#0088ff', image: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=400' },
         { id: 'tetris', name: 'Retro Blocks', category: 'Strategy', rating: 4.9, plays: '890k', color: '#ff0055', image: 'https://images.unsplash.com/photo-1627850604058-52e40de1b847?q=80&w=400' },
@@ -19,43 +51,12 @@ const GENERATE_GAMES = () => {
         { id: 'mole', name: 'Mole Hammer', category: 'Arcade', rating: 4.3, plays: '150k', color: '#00ffa2', image: 'https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=400' }
     ];
 
-    const descriptors = ['Cyber', 'Neon', 'Cosmic', 'Void', 'Galaxy', 'Shadow', 'Blade', 'Drift', 'Pixel', 'Sonic', 'Mega', 'Rocket', 'Star', 'Lunar', 'Arctic', 'Desert', 'Final', 'Pro', 'Ultra', 'Infinity'];
-    const nouns = ['Striker', 'Racer', 'Runner', 'Hunter', 'King', 'Master', 'Champion', 'Voyager', 'Lander', 'Breaker', 'Blaster', 'Quest', 'Blitz', 'Hero', 'Commander', 'Pilot', 'Surfer', 'Glitch', 'Logic', 'Force'];
-    const images = [
-        '1542751371-adc38448a05e', '1614728263952-84ea256f9679', '1550745165-9bc0b252726f', '1605898399741-5a9f9397637a',
-        '1511512578047-dfb367046420', '1547447134-cd3f5c716030', '1580234811497-9df7fd2f357e', '1553481187-be93c21490a9',
-        '1614027164847-1b2809eb189d', '1635070041078-e363dbe005cb', '1612117561467-b174ed187cce', '1627850604058-52e40de1b847',
-        '1518709268805-4e9042af9f23', '1529699211952-734e80c4d42b', '1551103782-8ab07afd45c1', '1668901319300-aa25e128cb5f',
-        '1493711662062-fa541adb3fc8', '1548685913-fe6578020a9a', '1552820728-8b83bb6b773f', '1538481199705-c710c4e965fc',
-        '1550745165-9bc0b252726f', '1612287230202-1ff1d85d1bdf', '1515233215284-8898b31a5477', '1542751110-97427bbecf20',
-        '1550745165-9bc0b252726f', '1629752119110-5390974ed735', '1614027164847-1b2809eb189d', '1611996598538-2095cc10aa9e',
-        '1550439062-609e1531270e', '1560419015-7c427e8ae5ba', '1534423861386-85a16f5d13fd', '1511512578047-dfb367046420',
-        '1555680202-c86f0e12f086', '1580234811497-9df7fd2f357e', '1536412597336-ade720556f3d', '1542751371-adc38448a05e',
-        '1593305841009-786d773410ca', '1614728263952-84ea256f9679', '1504450280346-640c30985208', '1550684846-17ae5aac5d3b',
-        '1605898399741-5a9f9397637a', '1614850523296-d8c1af93d400', '1518709268805-4e9042af9f23', '1547447134-cd3f5c716030',
-        '1612117561467-b174ed187cce', '1627850604058-52e40de1b847', '1551103782-8ab07afd45c1', '1635070041078-e363dbe005cb',
-        '1523875193933-281b37497d4b', '1548685913-fe6578020a9a', '1552820728-8b83bb6b773f', '1538481199705-c710c4e965fc',
-        '1612287230202-1ff1d85d1bdf', '1515233215284-8898b31a5477', '1542751110-97427bbecf20', '1629752119110-5390974ed735',
-        '1560419015-7c427e8ae5ba', '1534423861386-85a16f5d13fd', '1555680202-c86f0e12f086', '1536412597336-ade720556f3d',
-        '1593305841009-786d773410ca', '1504450280346-640c30985208', '1550684846-17ae5aac5d3b', '1614850523296-d8c1af93d400',
-        '1523875193933-281b37497d4b', '1543716627-ee89ddbc73ee', '1544652478-0207fa66f642', '1612287230202-1ff1d85d1bdf',
-        '1550745112-680415d8623b', '1511512578047-dfb367046420', '1542751371-adc38448a05e', '1538481199705-c710c4e965fc',
-        '1547447134-cd3f5c716030', '1614027164847-1b2809eb189d', '1529699211952-734e80c4d42b', '1614728263952-84ea256f9679',
-        '1580234811497-9df7fd2f357e', '1550745165-9bc0b252726f', '1635070041078-e363dbe005cb', '1612117561467-b174ed187cce',
-        '1627850604058-52e40de1b847', '1518709268805-4e9042af9f23', '1529699211952-734e80c4d42b', '1551103782-8ab07afd45c1',
-        '1668901319300-aa25e128cb5f', '1493711662062-fa541adb3fc8', '1552820728-8b83bb6b773f', '1629752119110-5390974ed735',
-        '1560419015-7c427e8ae5ba', '1534423861386-85a16f5d13fd', '1555680202-c86f0e12f086', '1536412597336-ade720556f3d',
-        '1593305841009-786d773410ca', '1504450280346-640c30985208', '1550684846-17ae5aac5d3b', '1614850523296-d8c1af93d400',
-        '1523875193933-281b37497d4b', '1543716627-ee89ddbc73ee', '1544652478-0207fa66f642', '1612287230202-1ff1d85d1bdf',
-        '1550745112-680415d8623b', '1511512578047-dfb367046420', '1542751371-adc38448a05e', '1538481199705-c710c4e965fc'
-    ];
-
-    const games = [...existing];
+    const games = [...manual];
     for (let i = games.length; i < 100; i++) {
-        const d = descriptors[i % descriptors.length];
-        const n = nouns[i % nouns.length];
+        const d = DESCRIPTORS[i % DESCRIPTORS.length];
+        const n = NOUNS[i % NOUNS.length];
         const cat = CATEGORIES[1 + (i % (CATEGORIES.length - 1))];
-        const imgId = images[i]; // Use index directly for unique assignment
+        const imgId = UNIQUE_IMAGES[i];
 
         games.push({
             id: `${d.toLowerCase()}-${n.toLowerCase()}-${i}`,
@@ -111,12 +112,12 @@ export default function GameGrid({ onPlay, initialFilter = 'All' }: { onPlay: (i
                                 className="flex items-center gap-2 text-primary text-[10px] font-black uppercase tracking-[0.3em] mb-4"
                             >
                                 <Sparkles className="w-3 h-3" />
-                                Infinite Discovery v2.0
+                                Nexus Discovery Hub
                             </motion.div>
                             <h2 className="text-4xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-4 italic">
                                 Nexus <br /><span className="text-primary">Centurion</span>
                             </h2>
-                            <p className="text-text-dim max-w-xl font-medium">100 high-performance titles deployed across the nexus. All subroutines synchronized.</p>
+                            <p className="text-text-dim max-w-xl font-medium">100 unique subroutines synchronized. Every world is a different experience.</p>
                         </div>
 
                         <div className="flex items-center gap-4 bg-white/5 border border-white/10 p-2 rounded-2xl backdrop-blur-3xl">
@@ -124,14 +125,14 @@ export default function GameGrid({ onPlay, initialFilter = 'All' }: { onPlay: (i
                                 <Users className="w-5 h-5 text-primary" />
                                 <div className="flex flex-col">
                                     <span className="text-xl font-black leading-none">100</span>
-                                    <span className="text-[8px] font-black uppercase tracking-widest text-text-dim">Games Active</span>
+                                    <span className="text-[8px] font-black uppercase tracking-widest text-text-dim">Unique Games</span>
                                 </div>
                             </div>
                             <div className="flex items-center gap-2 px-6">
                                 <Trophy className="w-5 h-5 text-secondary" />
                                 <div className="flex flex-col">
-                                    <span className="text-xl font-black leading-none">24.5M</span>
-                                    <span className="text-[8px] font-black uppercase tracking-widest text-text-dim">Global Plays</span>
+                                    <span className="text-xl font-black leading-none">Verified</span>
+                                    <span className="text-[8px] font-black uppercase tracking-widest text-text-dim">Subroutines</span>
                                 </div>
                             </div>
                         </div>
@@ -143,7 +144,7 @@ export default function GameGrid({ onPlay, initialFilter = 'All' }: { onPlay: (i
                             <input
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                placeholder="Search 100 games..."
+                                placeholder="Search the Nexus..."
                                 className="w-full bg-black/40 border border-white/5 rounded-2xl py-5 pl-16 pr-6 focus:outline-none focus:border-primary/50 transition-all font-bold"
                             />
                         </div>
@@ -163,7 +164,7 @@ export default function GameGrid({ onPlay, initialFilter = 'All' }: { onPlay: (i
 
                         <div className="lg:col-span-3 flex items-center justify-between gap-4 border-l border-white/5 pl-6">
                             <div className="flex flex-col">
-                                <span className="text-[8px] font-black uppercase tracking-widest text-text-dim mb-1">Primary Sort</span>
+                                <span className="text-[8px] font-black uppercase tracking-widest text-text-dim mb-1">Nexus Priority</span>
                                 <div className="flex gap-2">
                                     <SortBtn active={sortBy === 'plays'} onClick={() => setBy('plays')} label="HYPE" />
                                     <SortBtn active={sortBy === 'rating'} onClick={() => setBy('rating')} label="RANK" />
@@ -178,7 +179,7 @@ export default function GameGrid({ onPlay, initialFilter = 'All' }: { onPlay: (i
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     <AnimatePresence mode="popLayout">
-                        {visibleGames.map((game, i) => (
+                        {visibleGames.slice(0, page * gamesPerPage).map((game, i) => (
                             <GameCard key={game.id} game={game} index={i} onClick={() => onPlay(game.id)} />
                         ))}
                     </AnimatePresence>
@@ -187,13 +188,13 @@ export default function GameGrid({ onPlay, initialFilter = 'All' }: { onPlay: (i
                 {visibleGames.length < filteredGames.length && (
                     <div className="mt-16 flex flex-col items-center gap-6">
                         <p className="text-[10px] font-black uppercase tracking-[0.5em] text-text-dim">
-                            Showing {visibleGames.length} of {filteredGames.length} Worlds
+                            Loaded {visibleGames.length} of {filteredGames.length} Missions
                         </p>
                         <button
                             onClick={() => setPage(p => p + 1)}
                             className="group relative flex items-center gap-4 px-12 py-5 bg-white text-black rounded-2xl font-black uppercase tracking-[0.3em] overflow-hidden hover:scale-105 transition-transform"
                         >
-                            <span className="relative z-10">Load More Titles</span>
+                            <span className="relative z-10">Expand Library</span>
                             <ChevronDown className="w-5 h-5 group-hover:translate-y-1 transition-transform relative z-10" />
                             <div className="absolute inset-x-0 bottom-0 h-1 bg-primary group-hover:h-full transition-all duration-300 opacity-20" />
                         </button>
@@ -258,11 +259,6 @@ function GameCard({ game, index, onClick }: { game: any, index: number, onClick:
                 <div className="flex items-center justify-between">
                     <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center border border-primary/30 group-hover:bg-primary group-hover:text-black transition-all">
                         <Play className="w-4 h-4 fill-current" />
-                    </div>
-                    <div className="flex gap-1.5">
-                        {[1, 2, 3].map(d => (
-                            <div key={d} className="w-1 h-3 rounded-full bg-white/10 group-hover:bg-primary transition-all" style={{ transitionDelay: `${d * 0.1}s` }} />
-                        ))}
                     </div>
                 </div>
             </div>

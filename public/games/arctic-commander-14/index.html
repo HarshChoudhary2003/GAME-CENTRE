@@ -1,30 +1,33 @@
 <!DOCTYPE html><html><head><title>Arctic Commander</title><style>
-body{margin:0;background:#050508;color:#00ffaa;font-family:sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;overflow:hidden}
-canvas{border:2px solid #00ffaa;box-shadow:0 0 20px rgba(0,255,170,0.3);background:#000}
-.ui{position:absolute;top:20px;text-align:center;pointer-events:none}
-h1{margin:0;font-size:1.5em;text-transform:uppercase;letter-spacing:5px}
-.score{font-size:3em;font-weight:900}
+body{margin:0;background:#050508;color:#ffec00;font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+canvas{border:1px solid #ffec00;box-shadow:0 0 30px #ffec0044;background:#000;image-rendering:pixelated}
+.ui{position:absolute;top:20px;text-align:center;pointer-events:none;text-transform:uppercase}
+.score{font-size:4em;font-weight:900;letter-spacing:-4px}
 </style></head><body>
-<div class="ui"><h1>Arctic Commander</h1><div class="score" id="s">0</div><p>USE ARROWS TO MOVE | DODGE THE VOID</p></div>
+<div class="ui"><h1>Arctic Commander</h1><div class="score" id="s">0</div><p>ID: NEXUS-3986</p></div>
 <canvas id="c"></canvas>
 <script>
 const canvas=document.getElementById('c'),ctx=canvas.getContext('2d'),sE=document.getElementById('s');
-canvas.width=window.innerWidth*0.8;canvas.height=window.innerHeight*0.7;
-let p={x:canvas.width/2,y:canvas.height/2,s:20},score=0,obs=[];
-function spawn(){obs.push({x:Math.random()*canvas.width,y:-20,s:15+Math.random()*20,v:2+Math.random()*3})}
+canvas.width=800;canvas.height=600;
+let p={x:400,y:500,w:30,h:10,hp:100},score=0,items=[];
 window.addEventListener('keydown',e=>{
-if(e.key==='ArrowLeft')p.x-=20;if(e.key==='ArrowRight')p.x+=20;
-if(e.key==='ArrowUp')p.y-=20;if(e.key==='ArrowDown')p.y+=20;
+if(e.key==='ArrowLeft'&&p.x>0)p.x-=25;if(e.key==='ArrowRight'&&p.x<770)p.x+=25;
 });
-function update(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle='#00ffaa';ctx.fillRect(p.x,p.y,p.s,p.s);
-if(Math.random()<0.05)spawn();
-obs.forEach((o,i)=>{
-o.y+=o.v;ctx.fillStyle='#ff0055';ctx.fillRect(o.x,o.y,o.s,o.s);
-if(o.y>canvas.height){obs.splice(i,1);score++;sE.innerText=score;}
-if(p.x<o.x+o.s&&p.x+p.s>o.x&&p.y<o.y+o.s&&p.y+p.s>o.y){score=0;sE.innerText='OVER';obs=[];}
-});
-requestAnimationFrame(update);
-}update();
+function spawn(){
+items.push({x:Math.random()*770,y:-30,s:10+Math.random()*20,v:2+(14%5),t:Math.random()>0.2?'e':'b'});
+}
+function draw(){
+ctx.fillStyle='#000';ctx.fillRect(0,0,800,600);
+ctx.fillStyle='#ffec00';ctx.fillRect(p.x,p.y,p.w,p.h);
+if(Math.random()<0.03)spawn();
+items.forEach((it,idx)=>{
+it.y+=it.v;ctx.fillStyle=it.t==='e'?'#7000ff':'#ffec00';
+ctx.fillRect(it.x,it.y,it.s,it.s);
+if(it.y>600){items.splice(idx,1);score++;sE.innerText=score;}
+if(it.x<p.x+p.w&&it.x+it.s>p.x&&it.y<p.y+p.h&&it.y+it.s>p.y){
+if(it.t==='e'){score=0;sE.innerText='ERR';items=[];}
+else{score+=10;items.splice(idx,1);}
+}
+});requestAnimationFrame(draw);
+}draw();
 </script></body></html>

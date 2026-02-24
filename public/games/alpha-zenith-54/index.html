@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><title>Alpha Zenith</title><style>
+body{margin:0;background:#050508;color:#ffec00;font-family:'JetBrains Mono',monospace;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;overflow:hidden}
+canvas{border:1px solid #ffec00;box-shadow:0 0 30px #ffec0044;background:#000;image-rendering:pixelated}
+.ui{position:absolute;top:20px;text-align:center;pointer-events:none;text-transform:uppercase}
+.score{font-size:4em;font-weight:900;letter-spacing:-4px}
+</style></head><body>
+<div class="ui"><h1>Alpha Zenith</h1><div class="score" id="s">0</div><p>ID: NEXUS-6217</p></div>
+<canvas id="c"></canvas>
+<script>
+const canvas=document.getElementById('c'),ctx=canvas.getContext('2d'),sE=document.getElementById('s');
+canvas.width=800;canvas.height=600;
+let p={x:400,y:500,w:30,h:10,hp:100},score=0,items=[];
+window.addEventListener('keydown',e=>{
+if(e.key==='ArrowLeft'&&p.x>0)p.x-=25;if(e.key==='ArrowRight'&&p.x<770)p.x+=25;
+});
+function spawn(){
+items.push({x:Math.random()*770,y:-30,s:10+Math.random()*20,v:2+(54%5),t:Math.random()>0.2?'e':'b'});
+}
+function draw(){
+ctx.fillStyle='#000';ctx.fillRect(0,0,800,600);
+ctx.fillStyle='#ffec00';ctx.fillRect(p.x,p.y,p.w,p.h);
+if(Math.random()<0.03)spawn();
+items.forEach((it,idx)=>{
+it.y+=it.v;ctx.fillStyle=it.t==='e'?'#7000ff':'#ffec00';
+ctx.fillRect(it.x,it.y,it.s,it.s);
+if(it.y>600){items.splice(idx,1);score++;sE.innerText=score;}
+if(it.x<p.x+p.w&&it.x+it.s>p.x&&it.y<p.y+p.h&&it.y+it.s>p.y){
+if(it.t==='e'){score=0;sE.innerText='ERR';items=[];}
+else{score+=10;items.splice(idx,1);}
+}
+});requestAnimationFrame(draw);
+}draw();
+</script></body></html>
