@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Zen | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="game-header">
+            <h1>Sudoku <span>Zen</span></h1>
+            <div class="stats">
+                <div class="stat">MISTAKES: <span id="mistakes">0</span>/3</div>
+                <div class="stat">TIME: <span id="timer">00:00</span></div>
+            </div>
+        </div>
+
+        <div class="sudoku-container">
+            <div id="board"></div>
+            <div id="digits">
+                <div class="digit">1</div>
+                <div class="digit">2</div>
+                <div class="digit">3</div>
+                <div class="digit">4</div>
+                <div class="digit">5</div>
+                <div class="digit">6</div>
+                <div class="digit">7</div>
+                <div class="digit">8</div>
+                <div class="digit">9</div>
+            </div>
+        </div>
+
+        <div class="game-modal hide" id="game-modal">
+            <h2 id="modal-title">ZEN COMPLETE</h2>
+            <p>Time Taken: <span id="final-time">0</span></p>
+            <button id="restart-btn">NEW PUZZLE</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

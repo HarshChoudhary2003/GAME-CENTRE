@@ -1,0 +1,161 @@
+:root {
+    --primary: #00f2ff;
+    --bg: #05060f;
+    --cell: #1e214d;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    min-height: 100vh;
+}
+
+.nav-overlay {
+    padding: 20px 40px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.game-header h1 span {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.stats {
+    display: flex;
+    gap: 40px;
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.sudoku-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#board {
+    width: 450px;
+    height: 450px;
+    background: #000;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid var(--primary);
+}
+
+.tile {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #1e214d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.tile-start {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.tile-correct {
+    color: var(--primary);
+}
+
+.tile-error {
+    background: #ff3e3e;
+    color: #fff;
+}
+
+.horizontal-line {
+    border-bottom: 2px solid var(--primary);
+}
+
+.vertical-line {
+    border-right: 2px solid var(--primary);
+}
+
+#digits {
+    display: flex;
+    gap: 10px;
+}
+
+.digit {
+    width: 40px;
+    height: 40px;
+    background: #1e214d;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.digit:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+.game-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 11, 30, 0.95);
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--primary);
+    z-index: 100;
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    #board {
+        width: 320px;
+        height: 320px;
+    }
+
+    .tile {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,158 @@
+:root {
+    --green: #00ff41;
+    --red: #ff3e3e;
+    --yellow: #ffea00;
+    --blue: #00f2ff;
+    --bg: #05060f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    min-height: 100vh;
+}
+
+.nav-overlay {
+    padding: 20px 40px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.game-header h1 span {
+    color: var(--blue);
+    text-shadow: 0 0 10px var(--blue);
+}
+
+.stat {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--blue);
+}
+
+.simon-board {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.simon-btn {
+    border-radius: 20px;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: 0.2s;
+    border: 2px solid transparent;
+}
+
+.simon-btn.active {
+    opacity: 1;
+    transform: scale(0.95);
+}
+
+.green {
+    background: var(--green);
+}
+
+.red {
+    background: var(--red);
+}
+
+.yellow {
+    background: var(--yellow);
+}
+
+.blue {
+    background: var(--blue);
+}
+
+.green.active {
+    box-shadow: 0 0 30px var(--green);
+}
+
+.red.active {
+    box-shadow: 0 0 30px var(--red);
+}
+
+.yellow.active {
+    box-shadow: 0 0 30px var(--yellow);
+}
+
+.blue.active {
+    box-shadow: 0 0 30px var(--blue);
+}
+
+.center-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background: #1e214d;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    cursor: pointer;
+    border: 4px solid var(--bg);
+}
+
+.center-btn:hover {
+    background: var(--blue);
+    color: #000;
+}
+
+.game-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 6, 15, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+#restart-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: var(--blue);
+    border: none;
+    border-radius: 30px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}

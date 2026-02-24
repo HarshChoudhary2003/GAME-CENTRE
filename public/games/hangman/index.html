@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Cyber | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="game-header">
+            <h1>Hangman <span>Cyber</span></h1>
+            <p>Decrypt the secret word before the system locks.</p>
+        </div>
+
+        <div class="hangman-display">
+            <div class="stat">LIVES: <span id="lives">6</span></div>
+            <div class="visual-container">
+                <!-- SVG Hangman -->
+                <svg height="250" width="200" id="hangman-svg">
+                    <line x1="20" y1="230" x2="180" y2="230" />
+                    <line x1="100" y1="230" x2="100" y2="20" />
+                    <line x1="100" y1="20" x2="150" y2="20" />
+                    <line x1="150" y1="20" x2="150" y2="50" />
+                    <!-- Parts -->
+                    <circle cx="150" cy="70" r="20" class="part head hide" />
+                    <line x1="150" y1="90" x2="150" y2="150" class="part body hide" />
+                    <line x1="150" y1="110" x2="120" y2="140" class="part arm-l hide" />
+                    <line x1="150" y1="110" x2="180" y2="140" class="part arm-r hide" />
+                    <line x1="150" y1="150" x2="120" y2="190" class="part leg-l hide" />
+                    <line x1="150" y1="150" x2="180" y2="190" class="part leg-r hide" />
+                </svg>
+            </div>
+        </div>
+
+        <div class="word-container" id="word-display">
+            <!-- Word underlines -->
+        </div>
+
+        <div class="keyboard" id="keyboard">
+            <!-- Latters A-Z -->
+        </div>
+
+        <div class="game-modal hide" id="game-modal">
+            <h2 id="modal-title">ACCESS DENIED</h2>
+            <p>The word was: <span id="correct-word"></span></p>
+            <button id="restart-btn">NEW WORD</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

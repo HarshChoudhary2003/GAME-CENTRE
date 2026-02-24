@@ -1,0 +1,229 @@
+:root {
+    --primary: #55a630;
+    --secondary: #d00000;
+    --bg: #0a0b1e;
+    --text: #ffffff;
+    --pipe-width: 120px;
+    --pipe-height: 120px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: url('assets/mario-bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text);
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.nav-overlay {
+    padding: 20px 40px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 30px;
+    width: max-content;
+}
+
+.back-btn:hover {
+    color: #ffd700;
+    transform: translateX(-5px);
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.status-bar {
+    display: flex;
+    gap: 40px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 40px;
+    border-radius: 50px;
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.stat i {
+    color: #ffd700;
+}
+
+.stat.timer i {
+    color: #ff4d4d;
+}
+
+.board-container {
+    perspective: 1000px;
+}
+
+#board {
+    width: 450px;
+    height: 450px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+}
+
+#board div {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background: url('assets/pipe.png') no-repeat center center;
+    background-size: contain;
+    overflow: hidden;
+}
+
+#board img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: -100px;
+    left: 20px;
+    transition: bottom 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+#board img.show {
+    bottom: 30px;
+}
+
+.instructions {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+}
+
+.instructions span {
+    color: #ffd700;
+    font-weight: 700;
+}
+
+/* Game Over Modal */
+.game-over-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    color: #333;
+    padding: 50px;
+    border-radius: 30px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--secondary);
+}
+
+.final-score {
+    margin-bottom: 40px;
+}
+
+#final-score-val {
+    font-size: 5rem;
+    font-weight: 900;
+    color: #333;
+}
+
+#resetButton {
+    padding: 15px 40px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#resetButton:hover {
+    transform: scale(1.1);
+    background: #3a7a21;
+}
+
+.hide {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    #board {
+        width: 320px;
+        height: 320px;
+        gap: 10px;
+    }
+
+    #board div {
+        width: 90px;
+        height: 90px;
+    }
+
+    #board img {
+        width: 60px;
+        height: 60px;
+        left: 15px;
+    }
+
+    .status-bar {
+        padding: 10px 20px;
+        gap: 20px;
+    }
+
+    .stat {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duel: Rock Paper Scissors | Arcade Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <div class="nav-overlay">
+    <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+  </div>
+
+  <main class="game-wrapper">
+    <div class="game-header">
+      <h1>Rock <span>Paper</span> Scissors</h1>
+      <p>First to 10 wins the match!</p>
+    </div>
+
+    <div class="score-board">
+      <div class="player">
+        <div class="score" id="user-score">0</div>
+        <div class="label">PLAYER</div>
+      </div>
+      <div class="divider">VS</div>
+      <div class="player">
+        <div class="score" id="comp-score">0</div>
+        <div class="label">COMPUTER</div>
+      </div>
+    </div>
+
+    <div class="choices-container">
+      <div class="choices">
+        <div class="choice" id="rock" title="Rock">
+          <img src="assets/rock.png" alt="Rock" />
+          <div class="choice-label">ROCK</div>
+        </div>
+        <div class="choice" id="paper" title="Paper">
+          <img src="assets/paper.png" alt="Paper" />
+          <div class="choice-label">PAPER</div>
+        </div>
+        <div class="choice" id="scissors" title="Scissors">
+          <img src="assets/scissors.png" alt="Scissors" />
+          <div class="choice-label">SCISSORS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="msg-box">
+      <p id="msg">Choose your weapon!</p>
+    </div>
+
+    <div class="actions">
+      <button id="reset-btn" class="hide"><i class="fas fa-redo"></i> Reset Match</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

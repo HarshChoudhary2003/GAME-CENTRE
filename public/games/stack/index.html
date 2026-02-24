@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacker Pro | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="game-header">
+            <h1>Stacker <span>Pro</span></h1>
+            <div class="stat">SCORE: <span id="score">0</span></div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="400" height="600"></canvas>
+        </div>
+
+        <div class="controls-hint">
+            <p><i class="fas fa-mouse-pointer"></i> <span>CLICK</span> or <span>SPACE</span> to Stack</p>
+        </div>
+
+        <div class="game-modal hide" id="game-modal">
+            <h2>TOWER COLLAPSED</h2>
+            <p>Height: <span id="final-score">0</span></p>
+            <button id="restart-btn">REBUILD</button>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

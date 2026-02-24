@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Puzzle | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="game-header">
+            <h1>15 <span>Puzzle</span></h1>
+            <div class="stat">TURNS: <span id="turns">0</span></div>
+        </div>
+
+        <div id="board"></div>
+
+        <div class="game-modal hide" id="game-modal">
+            <h2>ORDER RESTORED</h2>
+            <p>Turns: <span id="final-turns">0</span></p>
+            <button id="restart-btn">SHUFFLE</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

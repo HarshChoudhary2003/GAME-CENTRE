@@ -1,0 +1,214 @@
+:root {
+    --bg: #0a0b1e;
+    --grid-bg: #1e214d;
+    --cell-bg: rgba(255, 255, 255, 0.05);
+    --primary: #00f2ff;
+    --text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.nav-overlay {
+    padding: 20px 40px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    color: var(--primary);
+}
+
+.game-wrapper {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.title-box h1 {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.title-box h1 span {
+    color: var(--primary);
+}
+
+.score-container {
+    display: flex;
+    gap: 15px;
+}
+
+.score-box {
+    flex: 1;
+    background: var(--grid-bg);
+    padding: 10px 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.score-box label {
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--primary);
+    font-weight: 800;
+    display: block;
+}
+
+.score-box div {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+#new-game-btn {
+    padding: 15px;
+    background: var(--primary);
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.grid-container {
+    width: 400px;
+    height: 400px;
+    background: var(--grid-bg);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 12px;
+    padding: 12px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.grid-cell {
+    background: var(--cell-bg);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+    transition: 0.1s;
+}
+
+/* Tile Colors */
+.tile-2 {
+    background: #eee4da;
+    color: #776e65;
+}
+
+.tile-4 {
+    background: #ede0c8;
+    color: #776e65;
+}
+
+.tile-8 {
+    background: #f2b179;
+    color: #f9f6f2;
+}
+
+.tile-16 {
+    background: #f59563;
+    color: #f9f6f2;
+}
+
+.tile-32 {
+    background: #f67c5f;
+    color: #f9f6f2;
+}
+
+.tile-64 {
+    background: #f65e3b;
+    color: #f9f6f2;
+}
+
+.tile-128 {
+    background: #edcf72;
+    color: #f9f6f2;
+    box-shadow: 0 0 15px #edcf72;
+}
+
+.tile-256 {
+    background: #edcc61;
+    color: #f9f6f2;
+    box-shadow: 0 0 20px #edcc61;
+}
+
+.tile-512 {
+    background: #edc850;
+    color: #f9f6f2;
+}
+
+.tile-1024 {
+    background: #edc53f;
+    color: #f9f6f2;
+    font-size: 1.5rem;
+}
+
+.tile-2048 {
+    background: var(--primary);
+    color: #000;
+    box-shadow: 0 0 30px var(--primary);
+    font-size: 1.5rem;
+}
+
+.game-status {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 11, 30, 0.9);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    z-index: 10;
+}
+
+#status-msg {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+#try-again-btn {
+    padding: 12px 30px;
+    background: var(--primary);
+    border: none;
+    border-radius: 30px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}

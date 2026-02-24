@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-a-Mole | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="status-bar">
+            <div class="stat">
+                <i class="fas fa-star"></i>
+                <span>SCORE: <span id="score">0</span></span>
+            </div>
+            <div class="stat timer">
+                <i class="fas fa-clock"></i>
+                <span>TIME: <span id="timer">30</span>s</span>
+            </div>
+        </div>
+
+        <div class="board-container">
+            <div id="board">
+                <!-- 3x3 Grid of Pipes -->
+            </div>
+        </div>
+
+        <div class="game-over-modal hide" id="game-over-modal">
+            <div class="modal-content">
+                <h2>GAME OVER</h2>
+                <div class="final-score">
+                    <span id="final-score-val">0</span>
+                    <p>Points Earned</p>
+                </div>
+                <button id="resetButton">Try Again</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p><i class="fas fa-info-circle"></i> Hit the <span>Moles</span> for +10 pts. Avoid the <span>Plants</span>!
+            </p>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

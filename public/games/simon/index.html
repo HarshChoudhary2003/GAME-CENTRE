@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simon Glow | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="game-header">
+            <h1>Simon <span>Glow</span></h1>
+            <div class="stat">SCORE: <span id="score">0</span></div>
+        </div>
+
+        <div class="simon-board">
+            <div class="simon-btn green" id="green"></div>
+            <div class="simon-btn red" id="red"></div>
+            <div class="simon-btn yellow" id="yellow"></div>
+            <div class="simon-btn blue" id="blue"></div>
+            <div class="center-btn" id="start-btn">START</div>
+        </div>
+
+        <div class="game-modal hide" id="game-modal">
+            <h2 id="modal-title">SEQUENCE LOST</h2>
+            <p>Score: <span id="final-score">0</span></p>
+            <button id="restart-btn">RETRY</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+:root {
+    --primary: #00f2ff;
+    --secondary: #7000ff;
+    --bg: #0a0b1e;
+    --card: rgba(255, 255, 255, 0.05);
+    --text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-overlay {
+    padding: 20px 40px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    color: var(--primary);
+    transform: translateX(-5px);
+}
+
+.game-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding-bottom: 50px;
+}
+
+.header-section {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 span {
+    color: var(--primary);
+}
+
+#turn-indicator {
+    color: var(--primary);
+    font-weight: 600;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+.container {
+    padding: 20px;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 15px;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
+    border: none;
+    background: var(--card);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.box:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+}
+
+.box:disabled {
+    cursor: default;
+}
+
+.box[data-player="X"] {
+    color: var(--primary);
+    text-shadow: 0 0 15px var(--primary);
+}
+
+.box[data-player="O"] {
+    color: var(--secondary);
+    text-shadow: 0 0 15px var(--secondary);
+}
+
+.controls button,
+#new-btn {
+    padding: 12px 30px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: 800;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.controls button:hover,
+#new-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 242, 255, 0.4);
+}
+
+/* Winner Message */
+.msg-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 11, 30, 0.9);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.msg-box {
+    text-align: center;
+    background: var(--card);
+    padding: 50px;
+    border-radius: 20px;
+    border: 1px solid var(--primary);
+    backdrop-filter: blur(10px);
+}
+
+.msg-box i {
+    font-size: 4rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+#msg {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@media (max-width: 500px) {
+    .game {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+
+    .box {
+        width: 80px;
+        height: 80px;
+    }
+}

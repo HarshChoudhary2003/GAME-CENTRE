@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake Neon | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="game-header">
+            <h1>Snake <span>Neon</span></h1>
+            <div class="score-display">
+                <div class="stat">SCORE: <span id="score">0</span></div>
+                <div class="stat">HIGH: <span id="high-score">0</span></div>
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+        </div>
+
+        <div class="controls-hint">
+            <p><i class="fas fa-keyboard"></i> Use <span>ARROWS</span> or <span>WASD</span> to turn</p>
+        </div>
+
+        <div class="game-over hide" id="game-over">
+            <h2>CRASHED!</h2>
+            <p>Score: <span id="final-score">0</span></p>
+            <button id="restart-btn">Try Again</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

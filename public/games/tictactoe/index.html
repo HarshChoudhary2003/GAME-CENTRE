@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe | Arcade Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="nav-overlay">
+        <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Home</a>
+    </div>
+
+    <main class="game-wrapper">
+        <div class="header-section">
+            <h1>Tic Tac <span>Toe</span></h1>
+            <p id="turn-indicator">Player X's Turn</p>
+        </div>
+
+        <div class="msg-container hide">
+            <div class="msg-box">
+                <i class="fas fa-trophy"></i>
+                <p id="msg">Winner</p>
+                <button id="new-btn">Play Again</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="game">
+                <button class="box" aria-label="Cell 1"></button>
+                <button class="box" aria-label="Cell 2"></button>
+                <button class="box" aria-label="Cell 3"></button>
+                <button class="box" aria-label="Cell 4"></button>
+                <button class="box" aria-label="Cell 5"></button>
+                <button class="box" aria-label="Cell 6"></button>
+                <button class="box" aria-label="Cell 7"></button>
+                <button class="box" aria-label="Cell 8"></button>
+                <button class="box" aria-label="Cell 9"></button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="reset-btn">Reset Board</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

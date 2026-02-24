@@ -1,0 +1,153 @@
+:root {
+    --primary: #00ff41;
+    --bg: #05060f;
+    --text: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.nav-overlay {
+    padding: 20px 40px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.game-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.game-header {
+    text-align: center;
+}
+
+.game-header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.game-header h1 span {
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.hangman-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+#hangman-svg {
+    stroke: #fff;
+    stroke-width: 4;
+    fill: none;
+}
+
+.part {
+    stroke: var(--primary);
+}
+
+.hide {
+    display: none;
+}
+
+.word-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.letter-slot {
+    width: 30px;
+    height: 45px;
+    border-bottom: 3px solid var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin-top: 30px;
+}
+
+.key {
+    padding: 10px;
+    background: #1e214d;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    font-weight: 800;
+    transition: 0.2s;
+}
+
+.key:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+.key.used {
+    opacity: 0.3;
+    cursor: default;
+}
+
+.game-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(5, 6, 15, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+#restart-btn {
+    margin-top: 30px;
+    padding: 12px 30px;
+    background: var(--primary);
+    border: none;
+    border-radius: 30px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .keyboard {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
