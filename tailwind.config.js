@@ -14,6 +14,7 @@ module.exports = {
                 'primary': '#00ffaa',
                 'secondary': '#0088ff',
                 'accent': '#ff0055',
+                'text': '#ffffff',
                 'text-dim': '#94a3b8',
             },
             scale: {
